@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hyperlocal Admin Dashboard</title>
+</head>
+<body>
+
+<h2>Users</h2>
+<button onclick="loadUsers()">Load Users</button>
+<pre id="users"></pre>
+
+<h2>Vendors</h2>
+<button onclick="loadVendors()">Load Vendors</button>
+<pre id="vendors"></pre>
+
+<h2>Orders</h2>
+<button onclick="loadOrders()">Load Orders</button>
+<pre id="orders"></pre>
+
+<script>
+const API = "http://127.0.0.1:5000";
+
+function loadUsers(){
+ fetch(API + "/user")
+ .then(r=>r.json())
+ .then(d=>document.getElementById("users").textContent =
+ JSON.stringify(d,null,2));
+}
+
+function loadVendors(){
+ fetch(API + "/vendor")
+ .then(r=>r.json())
+ .then(d=>document.getElementById("vendors").textContent =
+ JSON.stringify(d,null,2));
+}
+
+function loadOrders(){
+ fetch(API + "/order")
+ .then(r=>r.json())
+ .then(d=>document.getElementById("orders").textContent =
+ JSON.stringify(d,null,2));
+}
+</script>
+
+</body>
+</html>
