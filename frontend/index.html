@@ -1,44 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hyperlocal Admin Dashboard</title>
+<title>Hyperlocal Dashboard</title>
 </head>
+
 <body>
 
-<h2>Users</h2>
+<h2>Create User</h2>
+<input id="username" placeholder="User Name">
+<button onclick="createUser()">Add User</button>
+
+<h2>Create Vendor</h2>
+<input id="vendorname" placeholder="Vendor Name">
+<button onclick="createVendor()">Add Vendor</button>
+
+<h2>Create Order</h2>
+<input id="orderitem" placeholder="Item">
+<input id="userid" placeholder="User ID">
+<input id="vendorid" placeholder="Vendor ID">
+<button onclick="createOrder()">Add Order</button>
+
+<hr>
+
 <button onclick="loadUsers()">Load Users</button>
 <pre id="users"></pre>
 
-<h2>Vendors</h2>
 <button onclick="loadVendors()">Load Vendors</button>
 <pre id="vendors"></pre>
 
-<h2>Orders</h2>
 <button onclick="loadOrders()">Load Orders</button>
 <pre id="orders"></pre>
 
 <script>
-const API = "http://127.0.0.1:5000";
+const API="http://127.0.0.1:5000";
+
+function createUser(){
+ fetch(API+"/user",{
+ method:"POST",
+ headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({name:username.value})
+ }).then(()=>loadUsers());
+}
+
+function createVendor(){
+ fetch(API+"/vendor",{
+ method:"POST",
+ headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({name:vendorname.value})
+ }).then(()=>loadVendors());
+}
+
+function createOrder(){
+ fetch(API+"/order",{
+ method:"POST",
+ headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({
+ item:orderitem.value,
+ user_id:userid.value,
+ vendor_id:vendorid.value
+ })
+ }).then(()=>loadOrders());
+}
 
 function loadUsers(){
- fetch(API + "/user")
- .then(r=>r.json())
- .then(d=>document.getElementById("users").textContent =
- JSON.stringify(d,null,2));
+ fetch(API+"/user").then(r=>r.json()).then(d=>users.textContent=JSON.stringify(d,null,2));
 }
 
 function loadVendors(){
- fetch(API + "/vendor")
- .then(r=>r.json())
- .then(d=>document.getElementById("vendors").textContent =
- JSON.stringify(d,null,2));
+ fetch(API+"/vendor").then(r=>r.json()).then(d=>vendors.textContent=JSON.stringify(d,null,2));
 }
 
 function loadOrders(){
- fetch(API + "/order")
- .then(r=>r.json())
- .then(d=>document.getElementById("orders").textContent =
- JSON.stringify(d,null,2));
+ fetch(API+"/order").then(r=>r.json()).then(d=>orders.textContent=JSON.stringify(d,null,2));
 }
 </script>
 
