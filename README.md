@@ -1,41 +1,15 @@
-# Cloud Hyperlocal Delivery System
+## Architecture
 
-A simple hyperlocal delivery backend + frontend dashboard built using Flask and SQLite.
+Frontend (HTML + JS) → Flask Backend → SQLite Database
 
-## Features
+## Screenshots
 
-- User creation & listing
-- Vendor creation & listing
-- Order placement
-- Browser-based admin dashboard
-- REST APIs
-- SQLite database
-- GitHub version control
+- Dashboard
+- Users List
+- Vendors List
+- Orders List
 
-## Tech Stack
-
-- Python
-- Flask
-- Flask-SQLAlchemy
-- SQLite
-- HTML + JavaScript
-- Git
-
-## Project Structure
-
-cloud-hyperlocal/
-│
-├── backend/
-│   ├── app.py
-│   ├── models/
-│   ├── routes/
-│   ├── instance/
-│   └── requirements.txt
-│
-├── frontend/
-│   └── index.html
-│
-└── README.md
+Screenshots available in docs/screenshots/
 
 ## How to Run
 

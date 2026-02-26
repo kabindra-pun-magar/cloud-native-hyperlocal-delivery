@@ -1,0 +1,9 @@
+Frontend (HTML + JS)
+        |
+        v
+Flask Backend API
+        |
+        v
+SQLite Database
+
+User → Browser → Flask Routes → Models → SQLite
